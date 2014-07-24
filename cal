@@ -17,7 +17,7 @@ elsif ARGV.size == 1
     exit
   end
   year = Year.new(year)
-  puts year.to_s
+  puts "#{year}"
 elsif ARGV.size == 2
   month = ARGV[0].to_i
   year = ARGV[1].to_i

@@ -3,11 +3,11 @@ RSpec.describe Month do
   context ".header" do
     it "matches cal for December 2012" do
       month = Month.new(12,2012)
-      month.header.should == "   December 2012"
+      month.year_header.should == "December 2012".center(20)
     end
     it "matches cal for July 1901" do
       month = Month.new(7,1901)
-      month.header.should == "     July 1901"
+      month.year_header.should == "July 1901".center(20)
     end
   end
 
