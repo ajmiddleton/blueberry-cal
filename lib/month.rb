@@ -9,12 +9,8 @@ class Month
     @year = year
   end
 
-  def header
-    "#{name}".center(20)
-  end
-
-  def year_header
-    "#{name} #{@year}".center(20)
+  def header(switch=false)
+    switch ? "#{name}".center(20) : "#{name} #{@year}".center(20)
   end
 
   def name
@@ -28,17 +24,18 @@ class Month
     days[@month]
   end
 
-  def to_s(switch=false)
-    output = ""
-    switch ? output << header : output << year_header
+  def to_s(header_switch=false)
+    output = header(header_switch)
     output << "\nSu Mo Tu We Th Fr Sa\n"
     first = (Zellers.calculate(@month, @year) + 6) % 7
     num_days = days
     translated_days = []
+
     num_days.times {|i| translated_days << i+1 }
     first.times { translated_days.unshift "  "}
     remainder = 42 - translated_days.size
     remainder.times { translated_days << "  "}
+
     6.times do |i|
       7.times do |j|
         index = (i*7) + j
